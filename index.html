@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miyetti Allah Kautal Hore | Fulani Socio-cultural Association</title>
+    <style>
+        :root {
+            --primary: #1a5a1a; /* Deep green */
+            --secondary: #d4af37; /* Gold */
+            --accent: #8b4513; /* Brown */
+            --light: #f5f5dc; /* Beige */
+            --dark: #2c2416; /* Dark brown */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        } 
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+        }
+        
+        .auth-btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .login-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .signup-btn {
+            background: var(--secondary);
+            color: var(--dark);
+            border: 2px solid var(--secondary);
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(26, 90, 26, 0.7), rgba(26, 90, 26, 0.5)), 
+                        url('images/hqr.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta-btn {
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: var(--dark);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: white;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 5%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+       /* Aims & Objectives Section */
+.aims-objectives {
+    padding: 80px 5%;
+    background-color: var(--light);
+}
+
+.aims-objectives .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.aims-objectives h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.aims-objectives h2:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--secondary);
+    margin: 15px auto 0;
+}
+
+.objectives-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.objectives-list ol {
+    list-style-type: none;
+    counter-reset: objective-counter;
+    padding-left: 0;
+}
+
+.objectives-list li {
+    counter-increment: objective-counter;
+    margin-bottom: 25px;
+    padding-left: 60px;
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.objectives-list li:before {
+    content: counter(objective-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--primary);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.objectives-list strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.objectives-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.objectives-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.objectives-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .objectives-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .objectives-list li {
+        padding-left: 50px;
+        font-size: 1rem;
+    }
+    
+    .objectives-image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 500px) {
+    .objectives-list li:before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+    
+    .objectives-list li {
+        padding-left: 45px;
+        margin-bottom: 20px;
+    }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .objectives-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .objectives-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+}
+
+        
+        /* Initiatives */
+        .initiatives {
+            padding: 80px 5%;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .initiatives h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .initiative-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .initiative-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .initiative-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            color: white;
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+     /* Responsive */
+     @media (max-width: 992px) {
+        .about {
+            flex-direction: column;
+        }
+        
+        .about-text, .about-image {
+            flex: none;
+            width: 100%;
+        }
+        
+        .about-image {
+            margin-top: 30px;
+        }
+     }
+     
+     @media (max-width: 768px) {
+        .navbar {
+            padding: 15px 5%;
+        }
+        
+        .hamburger {
+            display: block;
+        }
+        
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        .nav-links {
+            position: fixed;
+            left: -100%;
+            top: 80px;
+            gap: 0;
+            flex-direction: column;
+            background-color: var(--primary);
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+            padding: 20px 0;
+        }
+        
+        .nav-links.active {
+            left: 0;
+        }
+        
+        .nav-links li {
+            margin: 15px 0;
+        }
+        
+        .auth-buttons {
+            margin: 15px 0 0 0;
+            justify-content: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+        }
+     }
+     
+     @media (max-width: 480px) {
+        .logo-text h1 {
+            font-size: 20px;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+        }
+        
+        .auth-btn {
+            padding: 6px 15px;
+            font-size: 14px;
+        }
+        
+        .objectives-list li {
+            padding-left: 40px;
+        }
+        
+        .objectives-list li:before {
+            width: 25px;
+            height: 25px;
+            font-size: 0.8rem;
+        }
+     }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo3.png" alt="Logo">
+            <div class="logo-text">
+                <h1>Miyetti Allah Kautal Hore</h1>
+                <p>Fulani Socio-cultural Association</p>
+            </div>
+        </div>
+        
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="culture.html">Our Culture</a></li>
+            <li><a href="initiative.html">Initiatives</a></li>
+            <div class="auth-buttons">
+                <!-- <button class="auth-btn login-btn"><a href="login.html">Login</a></button> -->
+                <button class="auth-btn signup-btn"><a href="registration.html">Register</a></button>
+            </div>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Preserving Fulani Heritage, Building Nigeria's Future</h1>
+            <p>Promoting the rich cultural heritage of the Fulani people while fostering unity, education, and sustainable development across Nigeria.</p>
+            <!-- <button class="cta-btn">Learn More</button> -->
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about">
+         <div class="about-image">
+            <img src="images/bodejo.jpg" alt="Fulani community">
+        </div>
+        <div class="about-text">
+            <h2>About Our Association</h2>
+            <p>Miyetti Allah Kautal Hore is the premier socio-cultural organization representing the Fulani people across Nigeria. Founded to preserve our rich cultural heritage, we serve as a unifying platform for all Fulani communities.</p>
+            <p>Our organization works tirelessly to promote peaceful coexistence between herders and farmers, while advocating for the rights and welfare of pastoralists nationwide.</p>
+            <button class="auth-btn signup-btn"><a href="registration.html">Register Now</a></button>
+        </div>
+    </section>
+</section>
+
+<!-- Aims & Objectives Section -->
+<section class="aims-objectives">
+    <div class="container">
+        <h2>Our Aims & Objectives</h2>
+        <div class="objectives-grid">
+            <div class="objectives-list">
+                <ol>
+                    <li><strong>Preserve and promote Fulani socio-cultural heritage</strong> - Maintain and celebrate the unique traditions, customs, and identity of the Fulani people.</li>
+                    
+                    <li><strong>Enhance members' social welfare</strong> - Work to improve the status, respect, and honor of the Fulani race through comprehensive support systems.</li>
+                    
+                    <li><strong>Unite Fulani leadership and communities</strong> - Serve as a unifying body for all Fulani traditional rulers, their subjects, and relatives across Nigeria.</li>
+                    
+                    <li><strong>Promote loyalty to traditional institutions</strong> - Instill in members deep respect and allegiance to Fulani traditional rulers and cultural institutions.</li>
+                    
+                    <li><strong>Collaborate with like-minded organizations</strong> - Partner with other associations sharing similar goals for Nigeria's progress and development.</li>
+                    
+                    <li><strong>Foster community relations</strong> - Encourage positive neighborly relations and socio-cultural cooperation within our communities.</li>
+                    
+                    <li><strong>Support member self-actualization</strong> - Provide assistance and encouragement for members to achieve their full potential.</li>
+                    
+                    <li><strong>Advance pastoralist education</strong> - Promote and facilitate educational opportunities specifically tailored for Fulani pastoralists.</li>
+                    
+                    <li><strong>Propagate Fulani culture</strong> - Actively preserve and promote Fulani language, customs, and traditions throughout Nigeria.</li>
+                    
+                    <li><strong>Develop Fulani communities</strong> - Contribute to meaningful projects that improve infrastructure and quality of life in Fulani settlements.</li>
+                    
+                    <li><strong>Ensure peaceful cattle rearing</strong> - Promote harmonious livestock practices and peaceful coexistence in all host communities.</li>
+                    
+                    <li><strong>Recognize distinguished service</strong> - Bestow traditional titles on members and non-members who excel in national service benefiting the association.</li>
+                </ol>
+            </div>
+            <!-- <div class="objectives-image">
+                <img src="images/fulani-leaders.jpg" alt="Fulani leaders in traditional attire">
+            </div> -->
+        </div>
+    </div>
+</section>    
+    <!-- Initiatives -->
+    <section class="initiatives">
+        <h2>Our Key Initiatives</h2>
+        <div class="initiatives-grid">
+            <div class="initiative-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Education</h3>
+                <p>Nomadic education programs and scholarships for Fulani youth across Nigeria.</p>
+            </div>
+            <div class="initiative-card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Conflict Resolution</h3>
+                <p>Mediation programs to promote peaceful coexistence between herders and farmers.</p>
+            </div>
+            <div class="initiative-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Healthcare</h3>
+                <p>Mobile health clinics serving remote pastoral communities.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="culture.html">Our Culture</a></li>
+                    <li><a href="initiative.html">Initiatives</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Maliya Cattle Market, KM 22 Abuja-Keffi Express Way Tudun-Wada, Karu LGC, Nasarawa State, Nigeria.</li>
+                    <li>+234 809 077 7778, +234 802 316 8600</li>
+                    <li>info@miyettiallahkautalhore.org</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/16NefkS822/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MiyettiN?t=mjtzZaeQ6jX7Y_iRlH2RvQ&s=09"><i class="fab fa-twitter"></i></a>
+                  <a href="https://www.tiktok.com/@miyetti_allah?_t=ZM-8xHLjOfNcvw&_r=1"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCUNpDgMus-Cx2Jv0zPSi5eg"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2023 Miyetti Allah Kautal Hore. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

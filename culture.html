@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Culture | Miyetti Allah Kautal Hore</title>
+    <style>
+        :root {
+            --primary: #1a5a1a; /* Deep green */
+            --secondary: #d4af37; /* Gold */
+            --accent: #8b4513; /* Brown */
+            --light: #f5f5dc; /* Beige */
+            --dark: #2c2416; /* Dark brown */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+          /* a{
+            text-decoration: none;
+        } */
+        
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            color: white;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+        }
+        
+        .logo-text p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+        }
+        
+        .auth-btn {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .login-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .signup-btn {
+            background: var(--secondary);
+            color: var(--dark);
+            border: 2px solid var(--secondary);
+        }
+        
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(rgba(26, 90, 26, 0.7), rgba(26, 90, 26, 0.5)), 
+                        url('images/shanu.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Culture Intro */
+        .culture-intro {
+            padding: 80px 5%;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .culture-intro h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Cultural Aspects */
+        .cultural-aspects {
+            padding: 0 5% 80px;
+        }
+        
+        .aspect-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .aspect-image {
+            flex: 1;
+            min-height: 400px;
+        }
+        
+        .aspect-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .aspect-content {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .aspect-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .aspect-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background-color: var(--light);
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        /* Traditions Gallery */
+        .traditions-gallery {
+            padding: 80px 5%;
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Language Section */
+        .language-section {
+            padding: 80px 5%;
+            background-color: var(--light);
+        }
+        
+        .language-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .language-text {
+            flex: 1;
+        }
+        
+        .language-text h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .language-examples {
+            margin-top: 30px;
+        }
+        
+        .language-example {
+            margin-bottom: 15px;
+        }
+        
+        .language-example p {
+            margin-bottom: 5px;
+        }
+        
+        .language-example .fulfulde {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .language-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .language-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .footer-social-links a {
+            color: white;
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .auth-buttons {
+                margin: 20px 0 0 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .aspect-card {
+                flex-direction: column;
+            }
+            
+            .aspect-image {
+                min-height: 250px;
+                width: 100%;
+            }
+            
+            .language-content {
+                flex-direction: column;
+            }
+        }
+
+        /* NEW RESPONSIVE ADDITIONS */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            margin-left: auto; /* This pushes the hamburger to the right */
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                flex-direction: row; /* Keep row layout even on mobile */
+                justify-content: space-between; /* Space between logo and hamburger */
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--primary);
+                padding: 20px 0;
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .auth-buttons {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            /* Align the list items in cultural aspects */
+            .aspect-content ul {
+                padding-left: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                flex-direction: row; /* Keep logo items in row */
+                text-align: left;
+            }
+
+            .logo img {
+                margin-right: 10px;
+                margin-bottom: 0;
+            }
+
+            .logo-text h1 {
+                font-size: 20px;
+            }
+
+            .logo-text p {
+                font-size: 12px;
+            }
+
+            .auth-btn {
+                padding: 6px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/logo3.png" alt="Logo">
+            <div class="logo-text">
+                <h1>Miyetti Allah Kautal Hore</h1>
+                <p>Fulani Socio-cultural Association</p>
+            </div>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="culture.html">Our Culture</a></li>
+            <li><a href="initiative.html">Initiatives</a></li>
+           <div class="auth-buttons">
+                <!-- <button class="auth-btn login-btn"><a href="login.html">Login</a></button> -->
+                <button class="auth-btn signup-btn"><a href="registration.html">Register</a></button>
+            </div>
+        </ul>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <h1>Our Fulani Culture</h1>
+            <p>Celebrating the rich heritage and traditions of the Fulani people</p>
+        </div>
+    </section>
+    
+    <!-- Culture Intro -->
+    <section class="culture-intro">
+        <h2>The Fulani Way of Life</h2>
+        <p>The Fulani people, also known as Fula or Fulbe, are one of the largest ethnic groups in Africa, with a rich cultural heritage that spans centuries. Our nomadic pastoral traditions, intricate social structures, and vibrant artistic expressions make us a unique and important part of Nigeria's cultural tapestry.</p>
+        <p>At Miyetti Allah Kautal Hore, we are dedicated to preserving and promoting these cultural treasures while adapting to the modern world.</p>
+    </section>
+    
+    <!-- Cultural Aspects -->
+    <section class="cultural-aspects">
+        <!-- Pastoralism -->
+        <div class="aspect-card">
+            <div class="aspect-image">
+                <img src="images/nai-debbo.jpg" alt="Fulani pastoralism">
+            </div>
+            <div class="aspect-content">
+                <h3>Pastoral Heritage</h3>
+                <p>The Fulani are traditionally nomadic pastoralists, renowned for our cattle-herding expertise. Our relationship with livestock is central to our identity, economy, and way of life.</p>
+                
+                <div class="highlight-box">
+                    <p>"The cow is to the Fulani what the computer is to the modern world - both a livelihood and a way of thinking."</p>
+                </div>
+                
+                <p>We practice transhumance - the seasonal movement of livestock between fixed grazing grounds - which has shaped our culture, social organization, and even our physical characteristics over generations.</p>
+            </div>
+        </div>
+        
+        <!-- Social Structure -->
+        <div class="aspect-card">
+            <div class="aspect-content">
+                <h3>Social Structure</h3>
+                <p>Fulani society is organized into a complex hierarchy of clans and lineages, with a strong emphasis on family, community, and Islamic values.</p>
+                
+                <p>Key elements of our social structure include:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>The Ardo (local leader) system</li>
+                    <li>Age-grade associations</li>
+                    <li>Specialized occupational groups</li>
+                    <li>Strong extended family networks</li>
+                </ul>
+                
+                <p>Respect for elders, hospitality to strangers, and communal responsibility are fundamental values in Fulani society.</p>
+            </div>
+            <div class="aspect-image">
+                <img src="images/kautal.jpg" alt="Fulani social structure">
+            </div>
+        </div>
+        
+        <!-- Art and Aesthetics -->
+        <div class="aspect-card">
+            <div class="aspect-image">
+                <img src="images/art.jpg" alt="Fulani art">
+            </div>
+            <div class="aspect-content">
+                <h3>Art and Aesthetics</h3>
+                <p>Fulani culture is rich in artistic expression, from intricate body art to beautiful handicrafts and architecture.</p>
+                
+                <p>Our aesthetic traditions include:</p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Traditional facial tattoos and scarification</li>
+                    <li>Elaborate hairstyles and adornments</li>
+                    <li>Beautifully decorated calabashes and milk containers</li>
+                    <li>Distinctive architecture like the Fulani hut</li>
+                </ul>
+                
+                <p>Fulani women are particularly renowned for their intricate henna designs and gold jewelry, which signify status and beauty.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Traditions Gallery -->
+    <section class="traditions-gallery">
+        <div class="section-header">
+            <h2>Cultural Traditions</h2>
+            <p>Explore the vibrant traditions that define Fulani culture</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/donu.jpg" alt="Sharo Festival">
+                <div class="gallery-caption">
+                    <h4>Sharo Festival</h4>
+                    <p>The traditional Fulani flogging ceremony to test courage and endurance</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/reuɓe.jpg" alt="Fulani Wedding">
+                <div class="gallery-caption">
+                    <h4>Wedding Traditions</h4>
+                    <p>Colorful ceremonies with unique Fulani customs and attire</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/group.jpg" alt="Fulani Dance">
+                <div class="gallery-caption">
+                    <h4>Traditional Dance</h4>
+                    <p>The energetic and rhythmic dances of Fulani celebrations</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/fura-nono.jpg" alt="Fulani Cuisine">
+                <div class="gallery-caption">
+                    <h4>Fulani Cuisine</h4>
+                    <p>Dairy-based dishes and special meals from our pastoral tradition</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/Grazing.jpg" alt="Cattle Breeding">
+                <div class="gallery-caption">
+                    <h4>Cattle Breeding</h4>
+                    <p>Our prized zebu cattle and traditional breeding knowledge</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/islam.jpg" alt="Islamic Traditions">
+                <div class="gallery-caption">
+                    <h4>Islamic Traditions</h4>
+                    <p>The deep Islamic faith that guides Fulani life</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Language Section 
+    <section class="language-section">
+        <div class="language-content">
+            <div class="language-text">
+                <h2>Fulfulde: Our Language</h2>
+                <p>Fulfulde (also known as Fula) is the language of the Fulani people, a member of the Senegambian branch of the Niger-Congo language family.</p>
+                <p>With over 20 million speakers across West Africa, Fulfulde is written in both Latin and Arabic scripts and has many regional variations.</p>
+                
+                <div class="language-examples">
+                    <h3>Common Fulfulde Phrases:</h3>
+                    <div class="language-example">
+                        <p class="fulfulde">Salaam alaikum</p>
+                        <p>Peace be upon you (greeting)</p>
+                    </div>
+                    <div class="language-example">
+                        <p class="fulfulde">Jam tan</p>
+                        <p>Good afternoon</p>
+                    </div>
+                    <div class="language-example">
+                        <p class="fulfulde">A jaaraama</p>
+                        <p>Thank you</p>
+                    </div>
+                    <div class="language-example">
+                        <p class="fulfulde">Mi yidi na'i</p>
+                        <p>I love cows</p>
+                    </div>
+                </div>
+            </div>
+            <div class="language-image">
+                <img src="https://images.unsplash.com/photo-1545665277-5937489579f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fulfulde language">
+            </div>
+        </div>
+    </section>-->
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="culture.html">Our Culture</a></li>
+                    <li><a href="initiative.html">Initiatives</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Maliya Cattle Market, KM 22 Abuja-Keffi Express Way Tudun-Wada, Karu LGC, Nasarawa State, Nigeria.</li>
+                    <li>+234 809 077 7778, +234 802 316 8600</li>
+                    <li>info@miyettiallahkautalhore.org</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/share/16NefkS822/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MiyettiN?t=mjtzZaeQ6jX7Y_iRlH2RvQ&s=09"><i class="fab fa-twitter"></i></a>
+                   <a href="https://www.tiktok.com/@miyetti_allah?_t=ZM-8xHLjOfNcvw&_r=1"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/channel/UCUNpDgMus-Cx2Jv0zPSi5eg"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2023 Miyetti Allah Kautal Hore. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
